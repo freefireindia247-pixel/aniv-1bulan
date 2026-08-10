@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Untuk Kamu ❤️</title>
+<title>Our Anniversary ❤️</title>
 
 <style>
 * {
@@ -19,17 +19,28 @@ body {
     overflow: hidden;
 }
 
+/* =========================
+   HALAMAN
+========================= */
+
 .page {
     position: fixed;
     inset: 0;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     padding: 25px;
+
     opacity: 0;
     pointer-events: none;
+
     transform: scale(1.05);
-    transition: 0.8s ease;
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
 }
 
 .page.active {
@@ -46,7 +57,7 @@ body {
 
 .small {
     font-size: 14px;
-    opacity: .7;
+    opacity: .65;
     margin-bottom: 15px;
 }
 
@@ -56,7 +67,7 @@ h1 {
 }
 
 h2 {
-    font-size: 27px;
+    font-size: 28px;
     margin-bottom: 15px;
 }
 
@@ -65,15 +76,24 @@ p {
     opacity: .9;
 }
 
+/* =========================
+   BUTTON
+========================= */
+
 button {
     border: none;
-    padding: 13px 25px;
+    padding: 13px 27px;
     margin-top: 25px;
+
     border-radius: 30px;
+
     font-size: 16px;
+
     cursor: pointer;
+
     background: white;
-    color: black;
+    color: #111;
+
     transition: .3s;
 }
 
@@ -81,47 +101,72 @@ button:hover {
     transform: scale(1.08);
 }
 
-/* BACKGROUND */
+button:active {
+    transform: scale(.95);
+}
+
+/* =========================
+   BACKGROUND
+========================= */
 
 #page1 {
     background:
-        radial-gradient(circle at center, #35101c, #080808 65%);
+        radial-gradient(circle at center,
+        #421522,
+        #080808 70%);
 }
 
 #page2 {
     background:
-        radial-gradient(circle at top, #271522, #080808 70%);
+        radial-gradient(circle at top,
+        #301724,
+        #080808 70%);
 }
 
 #page3 {
     background:
-        radial-gradient(circle at center, #171b30, #080808 70%);
+        radial-gradient(circle at center,
+        #1b2238,
+        #080808 70%);
 }
 
 #page4 {
     background:
-        radial-gradient(circle at center, #30151d, #080808 70%);
+        radial-gradient(circle at center,
+        #35151e,
+        #080808 70%);
 }
 
 #page5 {
     background:
-        radial-gradient(circle at center, #421321, #080808 70%);
+        radial-gradient(circle at center,
+        #481421,
+        #080808 70%);
 }
 
-/* HEART */
+/* =========================
+   HATI TERBANG
+========================= */
 
 .heart {
     position: fixed;
+
     bottom: -30px;
-    font-size: 20px;
-    animation: naik 6s linear infinite;
-    opacity: .6;
+
     pointer-events: none;
+
+    animation: heartUp linear forwards;
+
+    opacity: 0;
 }
 
-@keyframes naik {
-    from {
-        transform: translateY(0) rotate(0deg);
+@keyframes heartUp {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
         opacity: 0;
     }
 
@@ -129,45 +174,73 @@ button:hover {
         opacity: .8;
     }
 
-    to {
-        transform: translateY(-110vh) rotate(360deg);
+    100% {
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
         opacity: 0;
     }
 }
 
-/* VIDEO */
+/* =========================
+   VIDEO
+========================= */
 
-.video-box {
+.video-container {
     width: 100%;
+
     aspect-ratio: 16 / 9;
-    border-radius: 18px;
-    overflow: hidden;
+
     margin-top: 20px;
-    box-shadow: 0 0 35px rgba(255,255,255,.15);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    background: #000;
+
+    box-shadow:
+        0 0 35px rgba(255,255,255,.15);
 }
 
-.video-box iframe {
+.video-container video {
     width: 100%;
     height: 100%;
-    border: none;
+
+    object-fit: contain;
+
+    display: block;
 }
 
-/* FOTO */
+/* =========================
+   FOTO
+========================= */
 
 .photo {
     width: 100%;
-    max-height: 330px;
+
+    max-height: 320px;
+
     object-fit: cover;
+
     border-radius: 20px;
+
     margin: 15px 0;
-    box-shadow: 0 0 30px rgba(255,255,255,.15);
+
+    box-shadow:
+        0 0 30px rgba(255,255,255,.15);
 }
 
-/* TEXT BOX */
+/* =========================
+   PESAN
+========================= */
 
 .message {
-    max-height: 300px;
+    max-height: 280px;
+
     overflow-y: auto;
+
     padding: 5px 10px;
 }
 
@@ -177,36 +250,85 @@ button:hover {
 
 .message::-webkit-scrollbar-thumb {
     background: white;
+
     border-radius: 10px;
 }
 
 .signature {
-    margin-top: 25px;
+    margin-top: 22px;
+
     font-size: 14px;
-    opacity: .7;
+
+    opacity: .6;
 }
+
+/* =========================
+   DOT
+========================= */
+
+.dots {
+    position: fixed;
+
+    bottom: 20px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: 7px;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.25);
+
+    transition: .3s;
+}
+
+.dot.active {
+    background: white;
+
+    transform: scale(1.4);
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
-     HALAMAN 1
-========================= -->
+
+<!-- =====================================
+     PAGE 1
+===================================== -->
 
 <section class="page active" id="page1">
 
     <div class="content">
 
         <div class="small">
-            Ada sesuatu yang mau aku kasih ke kamu...
+            Ada sesuatu buat kamu...
         </div>
 
-        <h1>❤️ Happy Anniversary ❤️</h1>
+        <h1>
+            ❤️
+        </h1>
+
+        <h2>
+            Happy Anniversary
+        </h2>
 
         <p>
-            Buat seseorang yang sampai hari ini
-            masih jadi bagian paling spesial dalam hidup aku.
+            Hari ini bukan cuma sekadar tanggal.
+            <br>
+            Hari ini adalah salah satu hari
+            yang selalu ingin aku ingat.
         </p>
 
         <button onclick="nextPage()">
@@ -218,23 +340,36 @@ button:hover {
 </section>
 
 
-<!-- =========================
-     HALAMAN 2
-========================= -->
+
+<!-- =====================================
+     PAGE 2
+===================================== -->
 
 <section class="page" id="page2">
 
     <div class="content">
 
         <div class="small">
-            Sebelum lanjut...
+            Tentang perjalanan kita...
         </div>
 
-        <h2>Masih inget awal kita? 🥹</h2>
+        <h2>
+            Dari awal sampai sekarang 🥹
+        </h2>
 
         <p>
-            Dari awal kenal, ngobrol, ketawa bareng,
-            sampai akhirnya kita bisa sampai di titik ini.
+            Banyak hal yang sudah kita lewati.
+            <br><br>
+
+            Ada ketawa,
+            ada cerita,
+            ada hari-hari yang menyenangkan,
+            bahkan ada saat-saat kita
+            sama-sama keras kepala.
+            <br><br>
+
+            Tapi yang paling penting...
+            kita masih ada sampai hari ini.
         </p>
 
         <button onclick="nextPage()">
@@ -246,9 +381,10 @@ button:hover {
 </section>
 
 
-<!-- =========================
-     HALAMAN 3 - VIDEO
-========================= -->
+
+<!-- =====================================
+     PAGE 3 - VIDEO LOKAL
+===================================== -->
 
 <section class="page" id="page3">
 
@@ -258,33 +394,42 @@ button:hover {
             Sebuah video kecil buat kamu 🎬
         </div>
 
-        <h2>Our Little Story ❤️</h2>
+        <h2>
+            Our Memories ❤️
+        </h2>
+
 
         <!--
-        GANTI VIDEO ID DI BAWAH
+        VIDEO LOKAL
 
-        Caranya:
-        1. Buka video YouTube
-        2. Copy bagian ID-nya saja (contoh: skVgJPtFNb8)
-        3. Ganti 'skVgJPtFNb8' di bawah dengan ID video kamu
+        Masukkan file video dengan nama:
 
-        Contoh link: https://youtu.be/skVgJPtFNb8?si=zawp-5XRZukbSRHI
-        ID video: skVgJPtFNb8
+        video.mp4
+
+        ke folder yang sama dengan index.html
         -->
 
-        <div class="video-box">
+        <div class="video-container">
 
-            <iframe
-                src="https://www.youtube.com/embed/skVgJPtFNb8"
-                title="Anniversary Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
+            <video
+                id="anniversaryVideo"
+                controls
+                playsinline
+                preload="metadata">
+
+                <source
+                    src="video.mp4"
+                    type="video/mp4">
+
+                Browser kamu tidak mendukung
+                pemutaran video.
+            </video>
 
         </div>
 
+
         <button onclick="nextPage()">
-            Aku udah nonton ❤️
+            Lanjut ❤️
         </button>
 
     </div>
@@ -292,61 +437,81 @@ button:hover {
 </section>
 
 
-<!-- =========================
-     HALAMAN 4
-========================= -->
+
+<!-- =====================================
+     PAGE 4
+===================================== -->
 
 <section class="page" id="page4">
 
     <div class="content">
 
         <div class="small">
-            Sedikit pesan dari aku...
+            Ada sedikit pesan...
         </div>
 
-        <h2>Untuk Kamu ❤️</h2>
+        <h2>
+            Untuk Kamu ❤️
+        </h2>
+
 
         <!--
-        GANTI FOTO DI BAWAH
-        dengan foto kalian.
+        GANTI FOTO:
 
-        Contoh:
         foto1.jpg
+
+        dengan nama file foto kamu.
         -->
 
         <img
-            class="photo"
             src="foto1.jpg"
-            alt="Foto kenangan">
+            class="photo"
+            alt="Kenangan kita">
+
 
         <div class="message">
 
             <p>
-                Makasih ya udah hadir dalam hidup aku.
-                Makasih karena selama ini kamu udah
-                nemenin aku dalam banyak hal.
+
+                Makasih ya sudah hadir
+                dan menjadi bagian dari hidup aku.
+
                 <br><br>
 
-                Aku tahu hubungan kita nggak selalu
-                berjalan sempurna. Kadang ada salah paham,
-                kadang ada ego, kadang kita juga sama-sama
-                capek.
+                Mungkin aku nggak selalu bisa
+                menjadi seseorang yang sempurna.
+
+                Kadang aku salah,
+                kadang aku keras kepala,
+                dan mungkin kadang aku
+                bikin kamu kesel.
+
                 <br><br>
 
-                Tapi dari semua itu, aku tetap bersyukur
-                karena sampai hari ini kita masih sama-sama
-                berusaha.
+                Tapi satu hal yang pasti...
+
+                Aku selalu menghargai
+                setiap waktu yang kita lewati bersama.
+
                 <br><br>
 
-                Semoga ke depannya kita bisa terus belajar,
-                saling ngerti, saling jaga, dan bikin lebih
-                banyak kenangan bareng.
+                Semoga ke depannya kita
+                masih bisa membuat banyak
+                cerita dan kenangan baru.
+
+                <br><br>
+
+                Semoga kita tetap saling
+                mengerti, saling menghargai,
+                dan saling menjaga.
+
             </p>
 
         </div>
 
+
         <button onclick="nextPage()">
-            Terakhir ❤️
+            Satu lagi ❤️
         </button>
 
     </div>
@@ -354,46 +519,62 @@ button:hover {
 </section>
 
 
-<!-- =========================
-     HALAMAN 5
-========================= -->
+
+<!-- =====================================
+     PAGE 5
+===================================== -->
 
 <section class="page" id="page5">
 
     <div class="content">
 
         <div class="small">
-            Untuk hari ini dan hari-hari berikutnya...
+            Dan akhirnya...
         </div>
 
-        <h1>❤️</h1>
+        <h1>
+            ❤️
+        </h1>
 
         <h2>
             Happy Anniversary
         </h2>
 
         <p>
-            Semoga cerita kita nggak berhenti
-            sampai di sini.
+
+            Terima kasih sudah
+            menjadi bagian dari cerita aku.
+
             <br><br>
 
-            Semoga masih ada banyak hari,
-            banyak tawa, banyak cerita,
-            dan banyak kenangan yang bisa kita buat
-            bareng-bareng.
+            Terima kasih untuk semua
+            waktu, perhatian, tawa,
+            dan kenangan yang sudah kita buat.
+
             <br><br>
 
-            Terima kasih sudah menjadi bagian
-            dari perjalanan aku.
+            Semoga hari ini bukan
+            menjadi akhir dari cerita,
+
+            tapi menjadi satu lagi
+            halaman dari cerita panjang
+            yang masih akan kita tulis
+            bersama.
+
             <br><br>
 
             <b>
-                I love you ❤️
+                Happy Anniversary ❤️
             </b>
+
         </p>
 
+
         <div class="signature">
-            Dari seseorang yang selalu sayang kamu.
+
+            Dari seseorang
+            yang selalu menghargai kamu.
+
         </div>
 
     </div>
@@ -401,59 +582,194 @@ button:hover {
 </section>
 
 
+
+<!-- =====================================
+     INDICATOR
+===================================== -->
+
+<div class="dots">
+
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+
+</div>
+
+
+
 <script>
 
 let currentPage = 1;
 
+const totalPage = 5;
+
+
+/* =========================
+   PINDAH HALAMAN
+========================= */
+
 function nextPage() {
 
-    const current = document.getElementById(
-        "page" + currentPage
-    );
+    const current =
+        document.getElementById(
+            "page" + currentPage
+        );
 
     current.classList.remove("active");
 
+
     currentPage++;
 
-    if (currentPage > 5) {
-        currentPage = 1;
+
+    if (currentPage > totalPage) {
+
+        currentPage = totalPage;
+
     }
 
-    const next = document.getElementById(
-        "page" + currentPage
-    );
+
+    const next =
+        document.getElementById(
+            "page" + currentPage
+        );
 
     next.classList.add("active");
+
+
+    updateDots();
+
+
+    /*
+    Kalau pindah dari halaman video,
+    videonya otomatis berhenti.
+    */
+
+    if (currentPage !== 3) {
+
+        const video =
+            document.getElementById(
+                "anniversaryVideo"
+            );
+
+        if (video) {
+
+            video.pause();
+
+        }
+
+    }
+
 }
 
 
-/* ANIMASI HATI */
+/* =========================
+   DOT INDICATOR
+========================= */
+
+function updateDots() {
+
+    const dots =
+        document.querySelectorAll(".dot");
+
+
+    dots.forEach((dot, index) => {
+
+        dot.classList.toggle(
+            "active",
+            index === currentPage - 1
+        );
+
+    });
+
+}
+
+
+/* =========================
+   ANIMASI HATI
+========================= */
 
 function createHeart() {
 
-    const heart = document.createElement("div");
+    const heart =
+        document.createElement("div");
+
 
     heart.className = "heart";
 
-    heart.innerHTML = "❤️";
+
+    const hearts = [
+        "❤️",
+        "💗",
+        "💖",
+        "💕",
+        "💓"
+    ];
+
+
+    heart.innerHTML =
+        hearts[
+            Math.floor(
+                Math.random() *
+                hearts.length
+            )
+        ];
+
 
     heart.style.left =
         Math.random() * 100 + "vw";
 
-    heart.style.animationDuration =
-        (4 + Math.random() * 4) + "s";
 
     heart.style.fontSize =
-        (12 + Math.random() * 20) + "px";
+        (12 + Math.random() * 20)
+        + "px";
 
-    document.body.appendChild(heart);
+
+    heart.style.animationDuration =
+        (4 + Math.random() * 4)
+        + "s";
+
+
+    document.body.appendChild(
+        heart
+    );
+
 
     setTimeout(() => {
+
         heart.remove();
+
     }, 8000);
+
 }
 
-setInterval(createHeart, 600);
+
+setInterval(
+    createHeart,
+    600
+);
+
+
+/* =========================
+   KEYBOARD
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "ArrowRight" &&
+            currentPage < totalPage
+        ) {
+
+            nextPage();
+
+        }
+
+    }
+);
 
 </script>
 
