@@ -10,176 +10,341 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
 }
 
 body{
-    margin:0;
-    font-family:'Poppins',sans-serif;
+    height:100vh;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+    color:white;
+    background:#08050a;
+}
+
+/* BACKGROUND */
+
+.background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 40%,#5b1834,#190914 55%,#050507);
+}
+
+.glow{
+    position:absolute;
+    width:280px;
+    height:280px;
+    border-radius:50%;
+    background:rgba(255,60,130,.18);
+    filter:blur(70px);
+    animation:gerak 8s ease-in-out infinite alternate;
+}
+
+.glow:nth-child(1){
+    top:-80px;
+    left:-80px;
+}
+
+.glow:nth-child(2){
+    right:-80px;
+    bottom:-80px;
+    animation-delay:2s;
+}
+
+@keyframes gerak{
+    0%{transform:translate(0,0) scale(1)}
+    100%{transform:translate(80px,50px) scale(1.3)}
+}
+
+/* BINTANG */
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    opacity:.5;
+    animation:kelip 2s infinite alternate;
+}
+
+@keyframes kelip{
+    from{
+        opacity:.15;
+        transform:scale(.5);
+    }
+
+    to{
+        opacity:.9;
+        transform:scale(1.4);
+    }
+}
+
+/* KONTEN */
+
+.container{
+    position:relative;
+    z-index:5;
     height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    overflow:hidden;
-
-    background:
-    radial-gradient(circle at top left,#ffd6ea 0%,transparent 35%),
-    radial-gradient(circle at bottom right,#ff9fc6 0%,transparent 35%),
-    linear-gradient(135deg,#ff5fa2,#ff77b7,#ff8fc8);
-
-    color:white;
+    text-align:center;
+    padding:20px;
 }
 
-.card{
-    width:340px;
-    padding:35px;
+.box{
+    width:100%;
+    max-width:520px;
+    animation:muncul 1.2s ease;
+}
 
-    background:rgba(255,255,255,.18);
-    backdrop-filter:blur(20px);
+@keyframes muncul{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
 
-    border:1px solid rgba(255,255,255,.3);
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
 
-    border-radius:28px;
-
-    text-align:center;
-
-    color:white;
-
-    box-shadow:
-    0 20px 50px rgba(255,0,120,.25),
-    inset 0 0 20px rgba(255,255,255,.15);
+.subtitle{
+    font-size:13px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    opacity:.65;
+    margin-bottom:12px;
 }
 
 h1{
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.text{
+    font-size:15px;
+    line-height:1.7;
+    opacity:.85;
     margin-bottom:20px;
 }
 
-#typing{
-    min-height:250px;
-    line-height:1.8;
-    white-space:pre-wrap;
-    font-size:18px;
+/* VIDEO */
+
+.video-box{
+    width:100%;
+    aspect-ratio:16/9;
+    border-radius:18px;
+    overflow:hidden;
+    background:#000;
+    box-shadow:
+        0 0 30px rgba(255,80,130,.25);
+    border:1px solid rgba(255,255,255,.12);
 }
 
+.video-box iframe{
+    width:100%;
+    height:100%;
+    border:0;
+}
+
+/* BUTTON */
+
 button{
-    padding:14px 35px;
-    border:none;
+    margin-top:22px;
+    padding:13px 28px;
+    border:0;
     border-radius:50px;
-
-    background:linear-gradient(45deg,#ff2d75,#ff6aa9);
-
-    color:white;
-
-    font-size:17px;
-
+    background:white;
+    color:#35101d;
+    font-size:16px;
     font-weight:bold;
-
     cursor:pointer;
-
     transition:.3s;
 }
 
 button:hover{
-
-transform:scale(1.08);
-
-box-shadow:0 0 25px #ff7bb7;
-
+    transform:scale(1.07);
+    box-shadow:0 0 30px rgba(255,100,150,.3);
 }
-</style>
 
-</head>
-<body>
+button:active{
+    transform:scale(.94);
+}
 
-<div class="card">
+/* LOVE MELAYANG */
 
-<h1>❤️ Hai Kamu ❤️</h1>
+.float-love{
+    position:absolute;
+    bottom:-40px;
+    pointer-events:none;
+    animation:naik linear forwards;
+    z-index:2;
+}
 
-<div id="typing"></div>
+@keyframes naik{
+    0%{
+        transform:translateY(0) rotate(0);
+        opacity:0;
+    }
 
-<button onclick="selesai()">Lanjut ❤️</button>
+    15%{
+        opacity:.8;
+    }
 
-</div>
+    100%{
+        transform:translateY(-115vh) rotate(360deg);
+        opacity:0;
+    }
+}
 
-<script>
+/* MOBILE */
 
-const text=`Hai...
+@media(max-width:500px){
 
-Kalau kamu sedang membaca tulisan ini,
-berarti ada sesuatu yang ingin aku sampaikan.
+    h1{
+        font-size:28px;
+    }
 
-Sebenarnya aku sudah cukup lama
-menyimpan perasaan ini.
-
-Entah kenapa...
-setiap kali melihatmu,
-aku selalu merasa lebih bahagia.
-
-Mungkin kamu tidak pernah sadar,
-tetapi senyummu selalu berhasil
-membuat hariku menjadi lebih indah.
-
-Terima kasih
-karena sudah hadir
-dan tanpa sadar
-menjadi alasan aku tersenyum.
-
-Aku tahu...
-aku bukan orang yang sempurna.
-
-Aku masih banyak kekurangan,
-masih banyak yang harus aku pelajari.
-
-Tapi satu hal yang ingin aku pastikan...
-
-Perasaanku kepadamu benar-benar tulus.
-
-Hari ini,
-aku memberanikan diri
-untuk mengatakan semuanya.
-
-Aku menyukaimu.
-
-Bukan karena penampilanmu.
-
-Bukan karena orang lain.
-
-Aku menyukaimu
-karena kamu adalah dirimu sendiri.
-
-Kalau jawabanmu belum sekarang,
-aku akan menghargainya.
-
-Namun...
-
-Kalau kamu bersedia...
-
-Maukah kamu
-menjadi pacarku? ❤️`;
-
-
-
-let i=0;
-
-function ketik(){
-
-    if(i<text.length){
-
-        document.getElementById("typing").textContent+=text.charAt(i);
-
-        i++;
-
-        setTimeout(ketik,40);
-
+    .text{
+        font-size:14px;
     }
 
 }
+</style>
+</head>
 
-ketik();
+<body>
 
-function selesai(){
+<!-- BACKGROUND -->
 
-    window.location.href="untuk kamu3033.html";
+<div class="background">
+
+    <div class="glow"></div>
+    <div class="glow"></div>
+
+</div>
+
+
+<!-- KONTEN -->
+
+<div class="container">
+
+    <div class="box">
+
+        <div class="subtitle">
+            Sedikit sesuatu untuk kamu 🎬
+        </div>
+
+        <h1>
+            Our Little Memory ❤️
+        </h1>
+
+        <p class="text">
+            Sebelum kita lanjut ke cerita berikutnya,
+            aku mau kamu lihat sesuatu yang
+            aku buat khusus untuk kamu.
+        </p>
+
+
+        <!-- VIDEO GOOGLE DRIVE -->
+
+        <div class="video-box">
+
+            <iframe
+                src="https://drive.google.com/file/d/1c-Tj4sWiEyHMZzGPsZEhcr9xDdr9eNGZ/preview"
+                allow="autoplay"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+
+        <button onclick="nextPage()">
+            Selanjutnya ❤️
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* BIKIN BINTANG */
+
+for(let i=0;i<45;i++){
+
+    const star=document.createElement("div");
+
+    star.className="star";
+
+    star.style.left=
+        Math.random()*100+"vw";
+
+    star.style.top=
+        Math.random()*100+"vh";
+
+    star.style.animationDelay=
+        Math.random()*2+"s";
+
+    document
+        .querySelector(".background")
+        .appendChild(star);
+}
+
+
+/* LOVE MELAYANG */
+
+function createLove(){
+
+    const love=document.createElement("div");
+
+    love.className="float-love";
+
+    const hearts=[
+        "❤️",
+        "💗",
+        "💖",
+        "💕",
+        "💓",
+        "💞",
+        "✨"
+    ];
+
+    love.innerHTML=
+        hearts[
+            Math.floor(
+                Math.random()*hearts.length
+            )
+        ];
+
+    love.style.left=
+        Math.random()*100+"vw";
+
+    love.style.fontSize=
+        (12+Math.random()*22)+"px";
+
+    love.style.animationDuration=
+        (5+Math.random()*5)+"s";
+
+    document.body.appendChild(love);
+
+    setTimeout(()=>{
+        love.remove();
+    },10000);
+}
+
+setInterval(createLove,500);
+
+
+/* KE HALAMAN 3 */
+
+function nextPage(){
+
+    window.location.href="page3.html";
 
 }
 
