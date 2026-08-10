@@ -2,135 +2,360 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>❤️ Pertanyaan Terakhir ❤️</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Untuk Kamu ❤️</title>
 
 <style>
-body{
+*{
     margin:0;
-    font-family:'Poppins',sans-serif;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+    color:white;
+    background:#08050a;
+}
+
+/* BACKGROUND */
+
+.background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 40%,
+        #641a35,
+        #1b0912 55%,
+        #050507);
+}
+
+.glow{
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    background:rgba(255,60,130,.2);
+    filter:blur(75px);
+    animation:gerak 8s ease-in-out infinite alternate;
+}
+
+.glow:nth-child(1){
+    top:-100px;
+    left:-80px;
+}
+
+.glow:nth-child(2){
+    right:-100px;
+    bottom:-100px;
+    animation-delay:2s;
+}
+
+@keyframes gerak{
+    from{
+        transform:translate(0,0) scale(1);
+    }
+    to{
+        transform:translate(90px,60px) scale(1.3);
+    }
+}
+
+/* BINTANG */
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    animation:kelip 2s infinite alternate;
+}
+
+@keyframes kelip{
+    from{
+        opacity:.15;
+        transform:scale(.5);
+    }
+    to{
+        opacity:.9;
+        transform:scale(1.4);
+    }
+}
+
+/* KONTEN */
+
+.container{
+    position:relative;
+    z-index:5;
     height:100vh;
     display:flex;
-    justify-content:center;
     align-items:center;
-    overflow:hidden;
-
-    background:
-    radial-gradient(circle at top left,#ffd6ea 0%,transparent 35%),
-    radial-gradient(circle at bottom right,#ff9fc6 0%,transparent 35%),
-    linear-gradient(135deg,#ff5fa2,#ff77b7,#ff8fc8);
-
-    color:white;
-}
-
-.card{
-    width:340px;
-    padding:35px;
-
-    background:rgba(255,255,255,.18);
-    backdrop-filter:blur(20px);
-
-    border:1px solid rgba(255,255,255,.3);
-
-    border-radius:28px;
-
+    justify-content:center;
     text-align:center;
-
-    color:white;
-
-    box-shadow:
-    0 20px 50px rgba(255,0,120,.25),
-    inset 0 0 20px rgba(255,255,255,.15);
+    padding:25px;
 }
-button{
-    padding:14px 35px;
-    border:none;
+
+.box{
+    width:100%;
+    max-width:480px;
+    animation:muncul 1.5s ease;
+}
+
+@keyframes muncul{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.heart{
+    font-size:70px;
+    margin-bottom:20px;
+    animation:detak 1.5s infinite;
+    filter:drop-shadow(0 0 25px #ff477e);
+}
+
+@keyframes detak{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.15);
+    }
+}
+
+.subtitle{
+    font-size:13px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    opacity:.65;
+    margin-bottom:15px;
+}
+
+h1{
+    font-size:35px;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:16px;
+    line-height:1.8;
+    opacity:.88;
+}
+
+/* BUTTON WHATSAPP */
+
+.wa-button{
+    display:inline-block;
+    margin-top:30px;
+    padding:14px 28px;
     border-radius:50px;
-
-    background:linear-gradient(45deg,#ff2d75,#ff6aa9);
-
-    color:white;
-
-    font-size:17px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.3s;
-}
-
-button:hover{
-
-transform:scale(1.08);
-
-box-shadow:0 0 25px #ff7bb7;
-
-}
-
-#yes{
-    background:#ff2d75;
-    color:white;
-}
-
-#no{
-    position:relative;
+    border:none;
     background:white;
-    color:#ff2d75;
+    color:#35101d;
+    font-size:16px;
+    font-weight:bold;
+    text-decoration:none;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 0 25px rgba(255,255,255,.15);
+}
+
+.wa-button:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 35px rgba(255,100,150,.35);
+}
+
+.wa-button:active{
+    transform:scale(.94);
+}
+
+/* LOVE TERBANG */
+
+.float-love{
+    position:absolute;
+    bottom:-40px;
+    pointer-events:none;
+    animation:naik linear forwards;
+    z-index:2;
+}
+
+@keyframes naik{
+    0%{
+        transform:translateY(0) rotate(0);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.8;
+    }
+
+    100%{
+        transform:translateY(-115vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:500px){
+    h1{
+        font-size:30px;
+    }
+
+    p{
+        font-size:15px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<!-- BACKGROUND -->
 
-<h2>❤️ Pertanyaan Terakhir ❤️</h2>
+<div class="background">
 
-<p>
-Kalau setelah membaca semuanya,
-bagaimana menurutmu?
-
-Kalau kamu juga ingin mencoba menjalani hubungan denganku,
-tekan tombol <b>Iya ❤️</b>.
-
-Kalau kamu belum siap, tidak apa-apa. 😊
-</p>
-
-<button id="yes">Iya ❤️</button>
-<button id="no">gamauu 😊</button>
+    <div class="glow"></div>
+    <div class="glow"></div>
 
 </div>
 
+
+<!-- KONTEN -->
+
+<div class="container">
+
+    <div class="box">
+
+        <div class="heart">
+            ❤️
+        </div>
+
+        <div class="subtitle">
+            Sampai di sini dulu...
+        </div>
+
+        <h1>
+            Happy Anniversary ❤️
+        </h1>
+
+        <p>
+            Terima kasih sudah menjadi bagian
+            dari cerita ini.
+            <br><br>
+
+            Semoga masih ada banyak cerita,
+            tawa, dan kenangan yang bisa
+            kita buat bersama.
+            <br><br>
+
+            Kalau kamu sudah sampai di halaman ini...
+            aku mau kamu hubungi aku yaa. ❤️
+        </p>
+
+
+        <!--
+        GANTI NOMOR DI BAWAH
+
+        Contoh nomor Indonesia:
+        628123456789
+
+        Jangan pakai:
+        +62
+        0812
+        spasi
+        atau tanda -
+        -->
+
+        <a
+            class="wa-button"
+            href="https://wa.me/628xxxxxxxxxx?text=Happy%20Anniversary%20%21%20Aku%20udah%20selesai%20lihat%20webnya%20%F0%9F%98%AD%E2%9D%A4%EF%B8%8F"
+            target="_blank">
+
+            Hubungi Aku di WhatsApp 💬❤️
+
+        </a>
+
+    </div>
+
+</div>
+
+
 <script>
 
-const no=document.getElementById("no");
+/* BIKIN BINTANG */
 
-no.addEventListener("mouseover",()=>{
+for(let i=0;i<45;i++){
 
-    no.style.position="absolute";
-    no.style.left=Math.random()*70+"%";
-    no.style.top=Math.random()*70+"%";
+    const star=document.createElement("div");
 
-});
+    star.className="star";
 
-document.getElementById("yes").onclick=function(){
+    star.style.left=
+        Math.random()*100+"vw";
 
-    const nomor="6282185052636"; // Ganti dengan nomor WhatsApp kamu
+    star.style.top=
+        Math.random()*100+"vh";
 
-    const pesan=encodeURIComponent(
-        "illoveyou too ❤️❤️"
-    );
+    star.style.animationDelay=
+        Math.random()*2+"s";
 
-    window.location.href=`https://wa.me/${nomor}?text=${pesan}`;
-
+    document
+        .querySelector(".background")
+        .appendChild(star);
 }
 
-document.getElementById("no").onclick=function(){
 
-    alert("Tidak apa-apa 😊 Terima kasih sudah membaca sampai akhir.");
+/* LOVE MELAYANG */
 
+function createLove(){
+
+    const love=document.createElement("div");
+
+    love.className="float-love";
+
+    const hearts=[
+        "❤️",
+        "💗",
+        "💖",
+        "💕",
+        "💓",
+        "💞",
+        "✨"
+    ];
+
+    love.innerHTML=
+        hearts[
+            Math.floor(
+                Math.random()*hearts.length
+            )
+        ];
+
+    love.style.left=
+        Math.random()*100+"vw";
+
+    love.style.fontSize=
+        (12+Math.random()*22)+"px";
+
+    love.style.animationDuration=
+        (5+Math.random()*5)+"s";
+
+    document.body.appendChild(love);
+
+    setTimeout(()=>{
+        love.remove();
+    },10000);
 }
+
+setInterval(createLove,500);
 
 </script>
 
