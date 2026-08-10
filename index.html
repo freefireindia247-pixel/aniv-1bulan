@@ -3,597 +3,489 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Anniversary ❤️</title>
+
+<title>Happy Anniversary ❤️</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: #080808;
-    color: white;
-    overflow: hidden;
-}
 
 /* =========================
-   HALAMAN
+   RESET
 ========================= */
 
-.page {
-    position: fixed;
-    inset: 0;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+
+    min-height: 100vh;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    padding: 25px;
+    overflow: hidden;
 
-    opacity: 0;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: white;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 40%,
+            #541b2e 0%,
+            #2b101b 35%,
+            #10070c 70%,
+            #050505 100%
+        );
+
+}
+
+
+/* =========================
+   BACKGROUND GLOW
+========================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    width: 350px;
+    height: 350px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 80, 130, .12);
+
+    filter: blur(80px);
+
+    top: 10%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
     pointer-events: none;
 
-    transform: scale(1.05);
-
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
 }
 
-.page.active {
-    opacity: 1;
-    pointer-events: auto;
-    transform: scale(1);
-}
 
-.content {
-    width: 100%;
-    max-width: 500px;
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+
+    width: 90%;
+
+    max-width: 450px;
+
     text-align: center;
+
+    position: relative;
+
+    z-index: 5;
+
+    animation:
+        muncul 1.5s ease forwards;
+
 }
 
-.small {
-    font-size: 14px;
-    opacity: .65;
-    margin-bottom: 15px;
+
+@keyframes muncul {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(.95);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
 }
+
+
+/* =========================
+   LOVE
+========================= */
+
+.love {
+
+    font-size: 70px;
+
+    margin-bottom: 20px;
+
+    filter:
+        drop-shadow(
+            0 0 20px rgba(255, 70, 110, .5)
+        );
+
+    animation:
+        detak 1.5s ease-in-out infinite;
+
+}
+
+
+@keyframes detak {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.15);
+
+    }
+
+}
+
+
+/* =========================
+   SUBTITLE
+========================= */
+
+.subtitle {
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    opacity: .65;
+
+    margin-bottom: 13px;
+
+}
+
+
+/* =========================
+   TITLE
+========================= */
 
 h1 {
-    font-size: 38px;
-    margin-bottom: 15px;
+
+    font-size: 40px;
+
+    line-height: 1.15;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,.15);
+
 }
 
-h2 {
-    font-size: 28px;
-    margin-bottom: 15px;
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.description {
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    opacity: .85;
+
+    margin-bottom: 32px;
+
 }
 
-p {
-    line-height: 1.7;
-    opacity: .9;
-}
 
 /* =========================
    BUTTON
 ========================= */
 
-button {
-    border: none;
-    padding: 13px 27px;
-    margin-top: 25px;
+.next-button {
 
-    border-radius: 30px;
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    padding:
+        14px 27px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background: white;
+
+    color: #241018;
 
     font-size: 16px;
 
+    font-weight: bold;
+
     cursor: pointer;
 
-    background: white;
-    color: #111;
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.35);
 
-    transition: .3s;
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
 }
 
-button:hover {
-    transform: scale(1.08);
+
+.next-button:hover {
+
+    transform:
+        translateY(-3px)
+        scale(1.04);
+
+    box-shadow:
+        0 12px 35px rgba(255,255,255,.18);
+
 }
 
-button:active {
-    transform: scale(.95);
+
+.next-button:active {
+
+    transform:
+        scale(.95);
+
 }
+
 
 /* =========================
-   BACKGROUND
-========================= */
-
-#page1 {
-    background:
-        radial-gradient(circle at center,
-        #421522,
-        #080808 70%);
-}
-
-#page2 {
-    background:
-        radial-gradient(circle at top,
-        #301724,
-        #080808 70%);
-}
-
-#page3 {
-    background:
-        radial-gradient(circle at center,
-        #1b2238,
-        #080808 70%);
-}
-
-#page4 {
-    background:
-        radial-gradient(circle at center,
-        #35151e,
-        #080808 70%);
-}
-
-#page5 {
-    background:
-        radial-gradient(circle at center,
-        #481421,
-        #080808 70%);
-}
-
-/* =========================
-   HATI TERBANG
+   FLOATING HEART
 ========================= */
 
 .heart {
+
     position: fixed;
 
-    bottom: -30px;
+    bottom: -40px;
+
+    left: 0;
+
+    z-index: 1;
 
     pointer-events: none;
 
-    animation: heartUp linear forwards;
-
     opacity: 0;
+
+    animation:
+        naik linear forwards;
+
 }
 
-@keyframes heartUp {
+
+@keyframes naik {
 
     0% {
+
         transform:
             translateY(0)
             rotate(0deg);
 
         opacity: 0;
+
     }
 
-    20% {
+    15% {
+
         opacity: .8;
+
+    }
+
+    85% {
+
+        opacity: .6;
+
     }
 
     100% {
+
         transform:
             translateY(-110vh)
             rotate(360deg);
 
         opacity: 0;
+
     }
+
 }
+
 
 /* =========================
-   VIDEO
+   SMALL STARS
 ========================= */
 
-.video-container {
-    width: 100%;
+.star {
 
-    aspect-ratio: 16 / 9;
-
-    margin-top: 20px;
-
-    border-radius: 20px;
-
-    overflow: hidden;
-
-    background: #000;
-
-    box-shadow:
-        0 0 35px rgba(255,255,255,.15);
-}
-
-.video-container video {
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-
-    display: block;
-}
-
-/* =========================
-   FOTO
-========================= */
-
-.photo {
-    width: 100%;
-
-    max-height: 320px;
-
-    object-fit: cover;
-
-    border-radius: 20px;
-
-    margin: 15px 0;
-
-    box-shadow:
-        0 0 30px rgba(255,255,255,.15);
-}
-
-/* =========================
-   PESAN
-========================= */
-
-.message {
-    max-height: 280px;
-
-    overflow-y: auto;
-
-    padding: 5px 10px;
-}
-
-.message::-webkit-scrollbar {
-    width: 4px;
-}
-
-.message::-webkit-scrollbar-thumb {
-    background: white;
-
-    border-radius: 10px;
-}
-
-.signature {
-    margin-top: 22px;
-
-    font-size: 14px;
-
-    opacity: .6;
-}
-
-/* =========================
-   DOT
-========================= */
-
-.dots {
     position: fixed;
 
-    bottom: 20px;
+    width: 3px;
+    height: 3px;
 
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    display: flex;
-
-    gap: 7px;
-}
-
-.dot {
-    width: 7px;
-    height: 7px;
+    background: white;
 
     border-radius: 50%;
 
-    background: rgba(255,255,255,.25);
+    opacity: .4;
 
-    transition: .3s;
+    animation:
+        berkedip 2s ease-in-out infinite alternate;
+
 }
 
-.dot.active {
-    background: white;
 
-    transform: scale(1.4);
+@keyframes berkedip {
+
+    from {
+
+        opacity: .15;
+
+        transform: scale(.7);
+
+    }
+
+    to {
+
+        opacity: .8;
+
+        transform: scale(1.3);
+
+    }
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 480px) {
+
+    h1 {
+
+        font-size: 34px;
+
+    }
+
+    .love {
+
+        font-size: 60px;
+
+    }
+
+    .description {
+
+        font-size: 15px;
+
+    }
+
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- =====================================
-     PAGE 1
-===================================== -->
+<!-- =========================
+     KONTEN UTAMA
+========================= -->
 
-<section class="page active" id="page1">
+<div class="container">
 
-    <div class="content">
 
-        <div class="small">
-            Ada sesuatu buat kamu...
-        </div>
+    <!-- LOVE -->
 
-        <h1>
-            ❤️
-        </h1>
-
-        <h2>
-            Happy Anniversary
-        </h2>
-
-        <p>
-            Hari ini bukan cuma sekadar tanggal.
-            <br>
-            Hari ini adalah salah satu hari
-            yang selalu ingin aku ingat.
-        </p>
-
-        <button onclick="nextPage()">
-            Buka ❤️
-        </button>
-
+    <div class="love">
+        ❤️
     </div>
 
-</section>
 
+    <!-- SUBTITLE -->
 
-
-<!-- =====================================
-     PAGE 2
-===================================== -->
-
-<section class="page" id="page2">
-
-    <div class="content">
-
-        <div class="small">
-            Tentang perjalanan kita...
-        </div>
-
-        <h2>
-            Dari awal sampai sekarang 🥹
-        </h2>
-
-        <p>
-            Banyak hal yang sudah kita lewati.
-            <br><br>
-
-            Ada ketawa,
-            ada cerita,
-            ada hari-hari yang menyenangkan,
-            bahkan ada saat-saat kita
-            sama-sama keras kepala.
-            <br><br>
-
-            Tapi yang paling penting...
-            kita masih ada sampai hari ini.
-        </p>
-
-        <button onclick="nextPage()">
-            Lanjut →
-        </button>
-
+    <div class="subtitle">
+        Untuk seseorang yang spesial
     </div>
 
-</section>
 
+    <!-- TITLE -->
 
+    <h1>
+        Happy Anniversary
+    </h1>
 
-<!-- =====================================
-     PAGE 3 - VIDEO LOKAL
-===================================== -->
 
-<section class="page" id="page3">
+    <!-- DESCRIPTION -->
 
-    <div class="content">
+    <p class="description">
 
-        <div class="small">
-            Sebuah video kecil buat kamu 🎬
-        </div>
+        Hari ini bukan cuma sekadar tanggal.
 
-        <h2>
-            Our Memories ❤️
-        </h2>
+        <br><br>
 
+        Hari ini adalah hari untuk
+        mengingat semua cerita,
+        tawa, dan kenangan yang
+        sudah kita lewati bersama. ❤️
 
-        <!--
-        VIDEO LOKAL
+        <br><br>
 
-        Masukkan file video dengan nama:
+        Ada sesuatu yang ingin
+        aku tunjukkan buat kamu...
 
-        video.mp4
+    </p>
 
-        ke folder yang sama dengan index.html
-        -->
 
-        <div class="video-container">
+    <!-- BUTTON -->
 
-            <video
-                id="anniversaryVideo"
-                controls
-                playsinline
-                preload="metadata">
+    <button
+        class="next-button"
+        onclick="keHalamanDua()"
+    >
 
-                <source
-                    src="video.mp4"
-                    type="video/mp4">
+        Buka Cerita Kita
 
-                Browser kamu tidak mendukung
-                pemutaran video.
-            </video>
+        <span>→</span>
 
-        </div>
+    </button>
 
-
-        <button onclick="nextPage()">
-            Lanjut ❤️
-        </button>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================
-     PAGE 4
-===================================== -->
-
-<section class="page" id="page4">
-
-    <div class="content">
-
-        <div class="small">
-            Ada sedikit pesan...
-        </div>
-
-        <h2>
-            Untuk Kamu ❤️
-        </h2>
-
-
-        <!--
-        GANTI FOTO:
-
-        foto1.jpg
-
-        dengan nama file foto kamu.
-        -->
-
-        <img
-            src="foto1.jpg"
-            class="photo"
-            alt="Kenangan kita">
-
-
-        <div class="message">
-
-            <p>
-
-                Makasih ya sudah hadir
-                dan menjadi bagian dari hidup aku.
-
-                <br><br>
-
-                Mungkin aku nggak selalu bisa
-                menjadi seseorang yang sempurna.
-
-                Kadang aku salah,
-                kadang aku keras kepala,
-                dan mungkin kadang aku
-                bikin kamu kesel.
-
-                <br><br>
-
-                Tapi satu hal yang pasti...
-
-                Aku selalu menghargai
-                setiap waktu yang kita lewati bersama.
-
-                <br><br>
-
-                Semoga ke depannya kita
-                masih bisa membuat banyak
-                cerita dan kenangan baru.
-
-                <br><br>
-
-                Semoga kita tetap saling
-                mengerti, saling menghargai,
-                dan saling menjaga.
-
-            </p>
-
-        </div>
-
-
-        <button onclick="nextPage()">
-            Satu lagi ❤️
-        </button>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================
-     PAGE 5
-===================================== -->
-
-<section class="page" id="page5">
-
-    <div class="content">
-
-        <div class="small">
-            Dan akhirnya...
-        </div>
-
-        <h1>
-            ❤️
-        </h1>
-
-        <h2>
-            Happy Anniversary
-        </h2>
-
-        <p>
-
-            Terima kasih sudah
-            menjadi bagian dari cerita aku.
-
-            <br><br>
-
-            Terima kasih untuk semua
-            waktu, perhatian, tawa,
-            dan kenangan yang sudah kita buat.
-
-            <br><br>
-
-            Semoga hari ini bukan
-            menjadi akhir dari cerita,
-
-            tapi menjadi satu lagi
-            halaman dari cerita panjang
-            yang masih akan kita tulis
-            bersama.
-
-            <br><br>
-
-            <b>
-                Happy Anniversary ❤️
-            </b>
-
-        </p>
-
-
-        <div class="signature">
-
-            Dari seseorang
-            yang selalu menghargai kamu.
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================
-     INDICATOR
-===================================== -->
-
-<div class="dots">
-
-    <div class="dot active"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
 
 </div>
 
@@ -601,118 +493,51 @@ button:active {
 
 <script>
 
-let currentPage = 1;
-
-const totalPage = 5;
-
 
 /* =========================
-   PINDAH HALAMAN
+   PINDAH KE HALAMAN 2
 ========================= */
 
-function nextPage() {
+function keHalamanDua() {
 
-    const current =
-        document.getElementById(
-            "page" + currentPage
-        );
-
-    current.classList.remove("active");
-
-
-    currentPage++;
-
-
-    if (currentPage > totalPage) {
-
-        currentPage = totalPage;
-
-    }
-
-
-    const next =
-        document.getElementById(
-            "page" + currentPage
-        );
-
-    next.classList.add("active");
-
-
-    updateDots();
-
-
-    /*
-    Kalau pindah dari halaman video,
-    videonya otomatis berhenti.
-    */
-
-    if (currentPage !== 3) {
-
-        const video =
-            document.getElementById(
-                "anniversaryVideo"
-            );
-
-        if (video) {
-
-            video.pause();
-
-        }
-
-    }
+    window.location.href =
+        "page2.html";
 
 }
 
-
-/* =========================
-   DOT INDICATOR
-========================= */
-
-function updateDots() {
-
-    const dots =
-        document.querySelectorAll(".dot");
-
-
-    dots.forEach((dot, index) => {
-
-        dot.classList.toggle(
-            "active",
-            index === currentPage - 1
-        );
-
-    });
-
-}
 
 
 /* =========================
    ANIMASI HATI
 ========================= */
 
-function createHeart() {
+function buatHati() {
 
     const heart =
         document.createElement("div");
 
 
-    heart.className = "heart";
+    heart.className =
+        "heart";
 
 
-    const hearts = [
+    const jenisHati = [
+
         "❤️",
         "💗",
         "💖",
         "💕",
-        "💓"
+        "💓",
+        "💞"
+
     ];
 
 
     heart.innerHTML =
-        hearts[
+        jenisHati[
             Math.floor(
-                Math.random() *
-                hearts.length
+                Math.random()
+                * jenisHati.length
             )
         ];
 
@@ -727,7 +552,7 @@ function createHeart() {
 
 
     heart.style.animationDuration =
-        (4 + Math.random() * 4)
+        (5 + Math.random() * 5)
         + "s";
 
 
@@ -740,38 +565,64 @@ function createHeart() {
 
         heart.remove();
 
-    }, 8000);
+    }, 10000);
 
 }
 
 
 setInterval(
-    createHeart,
-    600
+    buatHati,
+    650
 );
+
 
 
 /* =========================
-   KEYBOARD
+   BIKIN BINTANG
 ========================= */
 
-document.addEventListener(
-    "keydown",
-    function(event) {
+function buatBintang() {
 
-        if (
-            event.key === "ArrowRight" &&
-            currentPage < totalPage
-        ) {
+    const star =
+        document.createElement("div");
 
-            nextPage();
 
-        }
+    star.className =
+        "star";
 
-    }
-);
+
+    star.style.left =
+        Math.random() * 100 + "vw";
+
+
+    star.style.top =
+        Math.random() * 100 + "vh";
+
+
+    star.style.animationDelay =
+        Math.random() * 2 + "s";
+
+
+    document.body.appendChild(
+        star
+    );
+
+}
+
+
+for (
+    let i = 0;
+    i < 35;
+    i++
+) {
+
+    buatBintang();
+
+}
+
 
 </script>
+
 
 </body>
 </html>
