@@ -2,627 +2,206 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Happy Anniversary ❤️</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Untuk Kamu ❤️</title>
 
 <style>
-
-/* =========================
-   RESET
-========================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-
-/* =========================
-   BODY
-========================= */
-
-body {
-
-    min-height: 100vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    overflow: hidden;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    color: white;
-
+body{
+    height:100vh;
+    overflow:hidden;
+    font-family:Arial,sans-serif;
+    color:white;
     background:
-
-        radial-gradient(
-            circle at 50% 40%,
-            #541b2e 0%,
-            #2b101b 35%,
-            #10070c 70%,
-            #050505 100%
-        );
-
+    radial-gradient(circle at center,#57182d,#180811 55%,#050507);
 }
 
-
-/* =========================
-   BACKGROUND GLOW
-========================= */
-
-body::before {
-
-    content: "";
-
-    position: fixed;
-
-    width: 350px;
-    height: 350px;
-
-    border-radius: 50%;
-
-    background: rgba(255, 80, 130, .12);
-
-    filter: blur(80px);
-
-    top: 10%;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    pointer-events: none;
-
+.page{
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:25px;
 }
 
-
-/* =========================
-   CONTAINER
-========================= */
-
-.container {
-
-    width: 90%;
-
-    max-width: 450px;
-
-    text-align: center;
-
-    position: relative;
-
-    z-index: 5;
-
-    animation:
-        muncul 1.5s ease forwards;
-
+.box{
+    max-width:500px;
+    z-index:5;
 }
 
+.heart{
+    font-size:65px;
+    margin-bottom:20px;
+    animation:detak 1.5s infinite;
+    filter:drop-shadow(0 0 20px #ff527c);
+}
 
-@keyframes muncul {
+h1{
+    font-size:36px;
+    margin-bottom:20px;
+}
 
-    from {
+#text{
+    min-height:100px;
+    font-size:17px;
+    line-height:1.8;
+    opacity:.9;
+}
 
-        opacity: 0;
+button{
+    margin-top:25px;
+    padding:13px 28px;
+    border:0;
+    border-radius:30px;
+    background:white;
+    color:#35101d;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
+    opacity:0;
+    transition:.3s;
+}
 
-        transform:
-            translateY(35px)
-            scale(.95);
+button.show{
+    opacity:1;
+}
 
+button:active{
+    transform:scale(.94);
+}
+
+.float{
+    position:fixed;
+    bottom:-30px;
+    pointer-events:none;
+    animation:naik linear forwards;
+    z-index:1;
+}
+
+@keyframes detak{
+    50%{transform:scale(1.15)}
+}
+
+@keyframes naik{
+    0%{
+        transform:translateY(0) rotate(0);
+        opacity:0;
     }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
+    20%{opacity:.8}
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
     }
-
 }
-
-
-/* =========================
-   LOVE
-========================= */
-
-.love {
-
-    font-size: 70px;
-
-    margin-bottom: 20px;
-
-    filter:
-        drop-shadow(
-            0 0 20px rgba(255, 70, 110, .5)
-        );
-
-    animation:
-        detak 1.5s ease-in-out infinite;
-
-}
-
-
-@keyframes detak {
-
-    0%,
-    100% {
-
-        transform:
-            scale(1);
-
-    }
-
-    50% {
-
-        transform:
-            scale(1.15);
-
-    }
-
-}
-
-
-/* =========================
-   SUBTITLE
-========================= */
-
-.subtitle {
-
-    font-size: 13px;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-
-    opacity: .65;
-
-    margin-bottom: 13px;
-
-}
-
-
-/* =========================
-   TITLE
-========================= */
-
-h1 {
-
-    font-size: 40px;
-
-    line-height: 1.15;
-
-    margin-bottom: 20px;
-
-    text-shadow:
-        0 0 20px rgba(255,255,255,.15);
-
-}
-
-
-/* =========================
-   DESCRIPTION
-========================= */
-
-.description {
-
-    font-size: 16px;
-
-    line-height: 1.8;
-
-    opacity: .85;
-
-    margin-bottom: 32px;
-
-}
-
-
-/* =========================
-   BUTTON
-========================= */
-
-.next-button {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 8px;
-
-    padding:
-        14px 27px;
-
-    border: none;
-
-    border-radius: 50px;
-
-    background: white;
-
-    color: #241018;
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 8px 30px rgba(0,0,0,.35);
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-
-}
-
-
-.next-button:hover {
-
-    transform:
-        translateY(-3px)
-        scale(1.04);
-
-    box-shadow:
-        0 12px 35px rgba(255,255,255,.18);
-
-}
-
-
-.next-button:active {
-
-    transform:
-        scale(.95);
-
-}
-
-
-/* =========================
-   FLOATING HEART
-========================= */
-
-.heart {
-
-    position: fixed;
-
-    bottom: -40px;
-
-    left: 0;
-
-    z-index: 1;
-
-    pointer-events: none;
-
-    opacity: 0;
-
-    animation:
-        naik linear forwards;
-
-}
-
-
-@keyframes naik {
-
-    0% {
-
-        transform:
-            translateY(0)
-            rotate(0deg);
-
-        opacity: 0;
-
-    }
-
-    15% {
-
-        opacity: .8;
-
-    }
-
-    85% {
-
-        opacity: .6;
-
-    }
-
-    100% {
-
-        transform:
-            translateY(-110vh)
-            rotate(360deg);
-
-        opacity: 0;
-
-    }
-
-}
-
-
-/* =========================
-   SMALL STARS
-========================= */
-
-.star {
-
-    position: fixed;
-
-    width: 3px;
-    height: 3px;
-
-    background: white;
-
-    border-radius: 50%;
-
-    opacity: .4;
-
-    animation:
-        berkedip 2s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes berkedip {
-
-    from {
-
-        opacity: .15;
-
-        transform: scale(.7);
-
-    }
-
-    to {
-
-        opacity: .8;
-
-        transform: scale(1.3);
-
-    }
-
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 480px) {
-
-    h1 {
-
-        font-size: 34px;
-
-    }
-
-    .love {
-
-        font-size: 60px;
-
-    }
-
-    .description {
-
-        font-size: 15px;
-
-    }
-
-}
-
 </style>
-
 </head>
-
 
 <body>
 
+<div class="page">
 
-<!-- =========================
-     KONTEN UTAMA
-========================= -->
+    <div class="box">
 
-<div class="container">
+        <div class="heart">❤️</div>
 
+        <h1>Happy Anniversary</h1>
 
-    <!-- LOVE -->
+        <div id="text"></div>
 
-    <div class="love">
-        ❤️
+        <button id="next"
+        onclick="location.href='page2.html'">
+            Selanjutnya →
+        </button>
+
     </div>
-
-
-    <!-- SUBTITLE -->
-
-    <div class="subtitle">
-        Untuk seseorang yang spesial
-    </div>
-
-
-    <!-- TITLE -->
-
-    <h1>
-        Happy Anniversary
-    </h1>
-
-
-    <!-- DESCRIPTION -->
-
-    <p class="description">
-
-        Hari ini bukan cuma sekadar tanggal.
-
-        <br><br>
-
-        Hari ini adalah hari untuk
-        mengingat semua cerita,
-        tawa, dan kenangan yang
-        sudah kita lewati bersama. ❤️
-
-        <br><br>
-
-        Ada sesuatu yang ingin
-        aku tunjukkan buat kamu...
-
-    </p>
-
-
-    <!-- BUTTON -->
-
-    <button
-        class="next-button"
-        onclick="keHalamanDua()"
-    >
-
-        Buka Cerita Kita
-
-        <span>→</span>
-
-    </button>
-
 
 </div>
 
-
-
 <script>
 
+const tulisan =
+`Hai kamu ❤️
 
-/* =========================
-   PINDAH KE HALAMAN 2
-========================= */
+Hari ini adalah hari yang spesial,
+karena kita kembali sampai di
+satu tanggal yang berarti buat kita.
 
-function keHalamanDua() {
+Mungkin aku nggak selalu bisa
+mengungkapkan semuanya lewat kata-kata,
+tapi aku bersyukur banget
+bisa melewati hari-hari ini sama kamu.`;
 
-    window.location.href =
-        "page2.html";
+let i=0;
+const speed=35;
+
+function ketik(){
+
+    if(i<tulisan.length){
+
+        document.getElementById("text")
+        .innerHTML +=
+        tulisan.charAt(i)
+        .replace(/\n/g,"<br>");
+
+        i++;
+
+        setTimeout(ketik,speed);
+
+    }else{
+
+        document
+        .getElementById("next")
+        .classList.add("show");
+
+    }
 
 }
 
+ketik();
 
 
-/* =========================
-   ANIMASI HATI
-========================= */
+/* ANIMASI */
 
-function buatHati() {
+function buatFloat(){
 
-    const heart =
-        document.createElement("div");
+    const el=document.createElement("div");
 
+    el.className="float";
 
-    heart.className =
-        "heart";
-
-
-    const jenisHati = [
-
-        "❤️",
-        "💗",
-        "💖",
-        "💕",
-        "💓",
-        "💞"
-
+    const isi=[
+        "❤️","💗","💖",
+        "💕","✨","🌸"
     ];
 
+    el.innerHTML=
+        isi[Math.floor(Math.random()*isi.length)];
 
-    heart.innerHTML =
-        jenisHati[
-            Math.floor(
-                Math.random()
-                * jenisHati.length
-            )
-        ];
+    el.style.left=
+        Math.random()*100+"vw";
 
+    el.style.fontSize=
+        14+Math.random()*18+"px";
 
-    heart.style.left =
-        Math.random() * 100 + "vw";
+    el.style.animationDuration=
+        5+Math.random()*5+"s";
 
+    document.body.appendChild(el);
 
-    heart.style.fontSize =
-        (12 + Math.random() * 20)
-        + "px";
-
-
-    heart.style.animationDuration =
-        (5 + Math.random() * 5)
-        + "s";
-
-
-    document.body.appendChild(
-        heart
-    );
-
-
-    setTimeout(() => {
-
-        heart.remove();
-
-    }, 10000);
+    setTimeout(()=>{
+        el.remove();
+    },10000);
 
 }
 
-
-setInterval(
-    buatHati,
-    650
-);
-
-
-
-/* =========================
-   BIKIN BINTANG
-========================= */
-
-function buatBintang() {
-
-    const star =
-        document.createElement("div");
-
-
-    star.className =
-        "star";
-
-
-    star.style.left =
-        Math.random() * 100 + "vw";
-
-
-    star.style.top =
-        Math.random() * 100 + "vh";
-
-
-    star.style.animationDelay =
-        Math.random() * 2 + "s";
-
-
-    document.body.appendChild(
-        star
-    );
-
-}
-
-
-for (
-    let i = 0;
-    i < 35;
-    i++
-) {
-
-    buatBintang();
-
-}
-
+setInterval(buatFloat,500);
 
 </script>
-
 
 </body>
 </html>
